@@ -44,7 +44,6 @@ function getProducts() {
                     <button>Add to cart</button>
                 </div>
             </div>
-
                 `
             })
         ))
@@ -55,10 +54,18 @@ function getProducts() {
 function getCategory(categoryProducts) {
     let getCategories = categoryProducts.textContent.trim();
     // console.log(categoryProducts.innerHTML.trim())
-    fetch(`https://fakestoreapi.com/products/category/${getCategories}`)
+    if (getCategories == 'All') {
+        // getCategories = '/';
+        console.log(getCategories)
+    }
+    else {
+        getCategories = `category/${getCategories}`;
+    }
+
+    fetch(`https://fakestoreapi.com/products/${getCategories}`)
         .then(res => res.json())
         .then(products => {
-            allProducts.innerHTML = ' ';
+            allProducts.innerHTML = '';
             products.forEach(product => {
 
                 const { image, title, price } = product;
