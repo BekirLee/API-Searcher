@@ -62,9 +62,9 @@ function search() {
             return product.title.toLowerCase().includes(e.target.value)
             // console.log(product.title.toLowerCase())
         });
-        
+
         if (filteredProducts.length == 0) {
-            alert();
+            alert('no products like that! ');
 
         }
         else {
