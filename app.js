@@ -1,25 +1,102 @@
 // filterig categories
 const filterContainer = document.querySelector(".filters");
 const allProducts = document.querySelector('.products');
-// let searchInput = document.querySelector('.searchInput');
 let searchInput = document.querySelector(".searchInput")
+let searchArr = [];
 
 
-// search()
-getProducts()
-filterCategories()
+getProducts();
+search();
+filterCategories();
 getCategory();
 
 
+function getProducts() {
 
-// function search() {
+    fetch('https://fakestoreapi.com/products')
+        .then(res => res.json())
+        .then(products => (
+            getData(products)
 
-//     searchInput.addEventListener('keyup', (e) => {
-//         e.preventDefault();
-//         console.log(e.target.value);
+        ))
+    // console.log(searchArr);
+}
 
-//     })
-// }
+function getData(products) {
+    products.forEach(product => {
+
+        // console.log(product);
+
+        // pushing all products to arr
+
+        searchArr.push(product);
+
+
+        const { image, title, price } = product;
+
+        allProducts.innerHTML += `
+        <div class="productItem">
+        <div class="productPhoto">
+            <img src="${image}" alt="">
+        </div>
+
+        <div class="product-info">
+            <h5 class='productTitle' >${title.slice(0, 20).concat('...')}</h5>
+            <h6 class='productPrice' >$ ${price}</h6>
+                <button>Add to cart</button>
+        </div>
+    </div>
+    `
+    })
+}
+
+// search
+
+function search() {
+    // console.log(searchArr);
+    searchInput.addEventListener('keyup', (e) => {
+        // e.preventDefault();
+        // const searchText = e.target.value.toLowerCase();
+        const filteredProducts = searchArr.filter(product => {
+            // console.log();
+            return product.title.toLowerCase().includes(e.target.value)
+            // console.log(product.title.toLowerCase())
+        });
+        // if (!filteredProducts) {
+        //     console.log('hello')
+        // }
+        // else {
+        console.log(filteredProducts);
+        displayProducts(filteredProducts);
+        // }
+
+    });
+}
+
+function displayProducts(filtered) {
+    // allProducts.innerHTML = '';
+    filtered.forEach(product => {
+
+        // console.log(filtered);
+        // console.log(searchArr);
+
+        const { image, title, price } = product;
+
+        allProducts.innerHTML += `
+        <div class="productItem">
+        <div class="productPhoto">
+            <img src="${image}" alt="">
+        </div>
+
+        <div class="product-info">
+            <h5 class='productTitle' >${title.slice(0, 20).concat('...')}</h5>
+            <h6 class='productPrice' >$ ${price}</h6>
+                <button>Add to cart</button>
+        </div>
+    </div>
+        `
+    })
+}
 
 
 function filterCategories() {
@@ -29,53 +106,15 @@ function filterCategories() {
             console.log(categories)
             categories.forEach((category) => {
                 filterContainer.innerHTML += `
-                <button class="filterBtn" onclick="getCategory(this)">
-                    <span>${category}</span>
-                </button>
-                `;
+            <button class="filterBtn" onclick="getCategory(this)">
+            <span>${category}</span>
+            </button>
+            `;
             })
+            // console.log(searchArr);
         })
 
 
-}
-
-function getProducts() {
-    // search
-    searchInput.addEventListener('keyup', (e) => {
-        e.preventDefault();
-        // console.log(e.target.value);
-        var inputs = e.target.value;
-    })
-
-    fetch('https://fakestoreapi.com/products')
-        .then(res => res.json())
-        .then(products => (
-            products.forEach(product => {
-
-                console.log(product);
-                const { image, title, price } = product;
-
-                title.filter((searched) => {
-                    if (searched == inputs) {
-                        inputs.style.color = "orange"
-                    }
-                })
-
-                allProducts.innerHTML += `
-                <div class="productItem">
-                <div class="productPhoto">
-                    <img src="${image}" alt="">
-                </div>
-
-                <div class="product-info">
-                    <h5 class='productTitle' >${title.slice(0, 20).concat('...')}</h5>
-                    <h6 class='productPrice' >$ ${price}</h6>
-                        <button>Add to cart</button>
-                </div>
-            </div>
-                `
-            })
-        ))
 }
 
 
@@ -98,7 +137,7 @@ function getCategory(categoryProducts) {
             products.forEach(product => {
 
                 const { image, title, price } = product;
-                console.log(allProducts);
+                // console.log(allProducts);
                 allProducts.innerHTML += `
                     <div class="productItem">
                     <div class="productPhoto">
@@ -116,3 +155,4 @@ function getCategory(categoryProducts) {
             })
         })
 }
+
