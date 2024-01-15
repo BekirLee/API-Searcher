@@ -59,3 +59,11 @@
     /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
+
+/* search */
+.searchInput {
+    border-radius: 5px;
+    border: 2px solid #00aaa0;
+    background-color: #d5eeff;
+    padding: 5px;
+}
