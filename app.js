@@ -62,19 +62,22 @@ function search() {
             return product.title.toLowerCase().includes(e.target.value)
             // console.log(product.title.toLowerCase())
         });
-        // if (!filteredProducts) {
-        //     console.log('hello')
-        // }
-        // else {
-        console.log(filteredProducts);
-        displayProducts(filteredProducts);
-        // }
+        
+        if (filteredProducts.length == 0) {
+            alert();
+
+        }
+        else {
+
+            console.log(filteredProducts);
+            displayProducts(filteredProducts);
+        }
 
     });
 }
 
 function displayProducts(filtered) {
-    // allProducts.innerHTML = '';
+    allProducts.innerHTML = '';
     filtered.forEach(product => {
 
         // console.log(filtered);
@@ -83,18 +86,19 @@ function displayProducts(filtered) {
         const { image, title, price } = product;
 
         allProducts.innerHTML += `
-        <div class="productItem">
-        <div class="productPhoto">
-            <img src="${image}" alt="">
-        </div>
-
-        <div class="product-info">
-            <h5 class='productTitle' >${title.slice(0, 20).concat('...')}</h5>
-            <h6 class='productPrice' >$ ${price}</h6>
-                <button>Add to cart</button>
-        </div>
-    </div>
-        `
+            <div class="productItem">
+               <div class="productPhoto">
+                   <img src="${image}" alt="">
+               </div>
+       
+               <div class="product-info">
+                   <h5 class='productTitle' >${title.slice(0, 20).concat('...')}</h5>
+                   <h6 class='productPrice' >$ ${price}</h6>
+                       <button>Add to cart</button>
+                       </div>
+                       </div>
+                       `
+        // alert("ho")
     })
 }
 
