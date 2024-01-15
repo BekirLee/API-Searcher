@@ -25,16 +25,17 @@ function getProducts() {
         .then(products => (
             products.forEach(product => {
                 console.log(product);
+                const { image, title, price } = product;
 
                 allProducts.innerHTML += `
-                <div class="card productItem">
-                <div class="product-photo">
-                    <img src="${product.image}" alt="">
+                <div class="productItem">
+                <div class="productPhoto">
+                    <img src="${image}" alt="">
                 </div>
 
                 <div class="product-info">
-                    <h5>${product.title}</h5>
-                    <h6>${product.price}</h6>
+                    <h5>${title.slice(0,20).concat('...')}</h5>
+                    <h6>${price}</h6>
                     <button>Add to cart</button>
                 </div>
             </div>
@@ -47,4 +48,4 @@ function getProducts() {
 getProducts()
 filterCategories()
 
-console.log('hello')
+// console.log('hello')
