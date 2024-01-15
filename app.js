@@ -2,6 +2,7 @@
 const filterContainer = document.querySelector(".filters");
 const allProducts = document.querySelector('.products');
 let searchInput = document.querySelector(".searchInput")
+const productTitle = document.querySelector(".productTitle");
 let searchArr = [];
 
 
@@ -56,10 +57,10 @@ function search() {
     // console.log(searchArr);
     searchInput.addEventListener('keyup', (e) => {
         // e.preventDefault();
-        // const searchText = e.target.value.toLowerCase();
+        const searchText = e.target.value.toLowerCase();
         const filteredProducts = searchArr.filter(product => {
-            // console.log();
-            return product.title.toLowerCase().includes(e.target.value)
+            // console.log(searchText);
+            return product.title.toLowerCase().includes(searchText)
             // console.log(product.title.toLowerCase())
         });
 
@@ -68,9 +69,8 @@ function search() {
 
         }
         else {
-
-            console.log(filteredProducts);
             displayProducts(filteredProducts);
+            console.log(filteredProducts);
         }
 
     });
@@ -78,7 +78,9 @@ function search() {
 
 function displayProducts(filtered) {
     allProducts.innerHTML = '';
+
     filtered.forEach(product => {
+        // productTitle.classList.add("active");
 
         // console.log(filtered);
         // console.log(searchArr);
@@ -92,7 +94,7 @@ function displayProducts(filtered) {
                </div>
        
                <div class="product-info">
-                   <h5 class='productTitle' >${title.slice(0, 20).concat('...')}</h5>
+                   <h5 class='productTitle highlighted'>${title.slice(0, 20).concat('...')}</h5>
                    <h6 class='productPrice' >$ ${price}</h6>
                        <button>Add to cart</button>
                        </div>

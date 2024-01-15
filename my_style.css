@@ -67,3 +67,11 @@
     background-color: #d5eeff;
     padding: 5px;
 }
+
+/* active */
+
+
+.highlighted {
+    background-color: #e5ff00;
+    font-weight: bold;
+}
