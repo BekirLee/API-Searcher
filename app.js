@@ -34,8 +34,8 @@ function getProducts() {
                 </div>
 
                 <div class="product-info">
-                    <h5>${title.slice(0,20).concat('...')}</h5>
-                    <h6>${price}</h6>
+                    <h5 class='productTitle' >${title.slice(0, 20).concat('...')}</h5>
+                    <h6 class='productPrice' >$ ${price}</h6>
                     <button>Add to cart</button>
                 </div>
             </div>
