@@ -11,7 +11,6 @@ search();
 filterCategories();
 getCategory();
 
-
 function getProducts() {
 
     fetch('https://fakestoreapi.com/products')
@@ -104,7 +103,6 @@ function displayProducts(filtered) {
     })
 }
 
-
 function filterCategories() {
     fetch('https://fakestoreapi.com/products/categories')
         .then(res => res.json())
@@ -122,8 +120,6 @@ function filterCategories() {
 
 
 }
-
-
 
 function getCategory(categoryProducts) {
     let getCategories = categoryProducts.textContent.trim();
