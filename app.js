@@ -177,3 +177,6 @@ function addToCart(title, photo, price) {
     </div>
     `
 }
+
+
+// start()

@@ -118,3 +118,19 @@
 .basketMenu .productPhoto img {
     height: 100%;
 }
+
+/*  */
+.btnSubmit {
+    position: relative;
+    left: 30px;
+}
+
+.gif {
+    position: absolute;
+    top: 4px;
+    left: -17px;
+}
+
+.disabled {
+    display: none;
+}
