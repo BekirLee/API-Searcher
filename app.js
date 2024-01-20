@@ -71,7 +71,7 @@ function search() {
         }
         else {
             displayProducts(filteredProducts);
-            console.log(filteredProducts);
+            // console.log(filteredProducts);
         }
 
     });
@@ -160,23 +160,23 @@ function getCategory(categoryProducts) {
         })
 }
 
-function addToCart(title, photo, price) {
+// function addToCart(title, photo, price) {
 
-    // console.log(title, photo);
+//     // console.log(title, photo);
 
-    basketMenu.innerHTML += `
-    <div class="productItem">
-        <div class="productPhoto">
-            <img src="${photo}" alt="">
-        </div>
+//     basketMenu.innerHTML += `
+//     <div class="productItem">
+//         <div class="productPhoto">
+//             <img src="${photo}" alt="">
+//         </div>
 
-        <div class="product-info">
-            <h5 class='productTitle' >${title.slice(0, 15).concat('...')}</h5>
-            <h6 class='productPrice' >$ ${price}</h6>
-        </div>
-    </div>
-    `
-}
+//         <div class="product-info">
+//             <h5 class='productTitle' >${title.slice(0, 15).concat('...')}</h5>
+//             <h6 class='productPrice' >$ ${price}</h6>
+//         </div>
+//     </div>
+//     `
+// }
 
 
 // start()
