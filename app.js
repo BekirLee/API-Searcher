@@ -60,9 +60,7 @@ function search() {
         // e.preventDefault();
         const searchText = e.target.value.toLowerCase();
         const filteredProducts = searchArr.filter(product => {
-            // console.log(searchText);
             return product.title.toLowerCase().includes(searchText)
-            // console.log(product.title.toLowerCase())
         });
 
         if (filteredProducts.length == 0) {
@@ -71,7 +69,6 @@ function search() {
         }
         else {
             displayProducts(filteredProducts);
-            // console.log(filteredProducts);
         }
 
     });
